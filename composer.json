@@ -1,0 +1,19 @@
+{
+  "name" : "windwork/logger",
+  "description" : "Windwork日志组件，按日志级别写入日志",
+  "version" : "0.1.0",
+  "require" : {
+    "php" : ">=5.5.0"
+  },
+  "license" : "MIT",
+  "autoload" : {
+    "psr-4" : {
+      "wf\\logger\\" : "."
+    }
+  },
+  "type" : "library",
+  "authors" : [ {
+    "name" : "Windwork Community",
+    "homepage" : "http://windwork.org"
+  } ]
+}
