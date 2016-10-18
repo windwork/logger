@@ -7,6 +7,25 @@ require_once '../adapter/File.php';
 use \wf\logger\adapter\File;
 use \wf\logger\LoggerFactory;
 
+function cfg() {
+	$cfg = [
+		'log_adapter' => 'File',
+		'log_dir'     => __DIR__.'/log',
+		'log_level'   => 7,
+	];
+	
+	if (!is_dir($cfg['log_dir'])) {
+		mkdir($cfg['log_dir'], 0755, true);
+	}
+	
+	return $cfg;
+}
+
+function logging($level, $message) {
+	$logger = LoggerFactory::create(cfg());
+	return $logger->log($level, $message);
+}
+
 /**
  * File test case.
  */
@@ -24,17 +43,8 @@ class FileTest extends PHPUnit_Framework_TestCase {
 	protected function setUp() {
 		parent::setUp ();
 
-		$cfg = array(
-			'log_adapter' => 'File',
-	        'log_dir'     => __DIR__.'/log',
-	        'log_level'   => 7,
-		);
-		if (!is_dir($cfg['log_dir'])) {
-			mkdir($cfg['log_dir'], 0755, true);
-		}
-		\wf\logger\LoggerFactory::init($cfg);
 		
-		$this->file = new File($cfg);
+		$this->file = LoggerFactory::create(cfg());
 	}
 	
 	/**
@@ -57,7 +67,8 @@ class FileTest extends PHPUnit_Framework_TestCase {
 		logging('debug', 'dbg message');
 		
 		// 日志组件接口
-		$logger = \wf\logger\LoggerFactory::create();
+		$logger = \wf\logger\LoggerFactory::create(cfg());
+		
 		$logger->emergency('emergency info');
 		$logger->info('info message');
 		$logger->critical('critical message');

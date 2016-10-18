@@ -141,6 +141,9 @@ abstract class ALogger {
     				return false;
     			}
     			break;
+    	    case self::LEVEL_DEBUG:
+    	    	// logging all
+    	    	break;
     	}
     	
     	return true;

@@ -5,7 +5,7 @@ Windwork 日志组件
 # 初始化
 使用日志组件之前，需要先初始化，否则无法正常使用。
 ```
-$cfg = $cfg = array(
+$cfg = array(
     'log_adapter'  => 'File',     // 日志处理（\wf\logger\adapter\中）实现的类
     'log_dir'      => 'data/log', // 日志保存路径，支持wrapper，如新浪公有云可使用  saekv://data/log或saemc://data/cache
     'log_level'    => 7,          // 启用日志级别，可为0-7，记录小于或等于该级别的日志。日志等级：0)emergency，1)alert，2)critical，3)error，4)warning，5)notice，6)info，7)debug
@@ -23,7 +23,7 @@ $message = 'dgb message'; // 日志内容，如果是非标量则使用var_expor
 logging($level, $message);
 ```
 
-# 通过日志方法记录日志
+# 通过日志对象方法记录日志
 
 ```
 $logging = \wf\logger\LoggerFactory::create();
