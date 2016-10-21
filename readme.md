@@ -2,7 +2,10 @@ Windwork 日志组件
 ========================
 保存各种类型的应用级日志
 
-# 初始化
+## license
+MIT
+
+## 初始化
 使用日志组件之前，需要先初始化，否则无法正常使用。
 ```
 $cfg = array(
@@ -15,7 +18,7 @@ $cfg = array(
 
 ```
 
-# 通过logging()函数记录日志
+## 通过logging()函数记录日志
 
 ```
 $level = 'debug'; // 日志级别，可以是 emergency|alert|critical|error|warning|notice|info|debug
@@ -23,7 +26,7 @@ $message = 'dgb message'; // 日志内容，如果是非标量则使用var_expor
 logging($level, $message);
 ```
 
-# 通过日志对象方法记录日志
+## 通过日志对象方法记录日志
 
 ```
 $logging = \wf\logger\LoggerFactory::create();
@@ -57,7 +60,7 @@ $logging->debug('日志内容');
 
 ```
 
-# 日志级别
+## 日志级别
 ```
   0）emergency 系统不可用
   1）alert     必须立刻采取行动

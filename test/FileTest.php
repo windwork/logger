@@ -1,8 +1,8 @@
 <?php
-require_once '../ALogger.php';
-require_once '../LoggerFactory.php';
-require_once '../Exception.php';
-require_once '../adapter/File.php';
+require_once '../lib/ALogger.php';
+require_once '../lib/LoggerFactory.php';
+require_once '../lib/Exception.php';
+require_once '../lib/adapter/File.php';
 
 use \wf\logger\adapter\File;
 use \wf\logger\LoggerFactory;
