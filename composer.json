@@ -2,7 +2,7 @@
   "name" : "windwork/logger",
   "description" : "Windwork日志组件，按日志级别写入日志",
   "keywords": ["log","logger"],
-  "version" : "0.2.1",
+  "version" : "0.3.0",
   "require" : {
     "php" : ">=5.5.0"
   },

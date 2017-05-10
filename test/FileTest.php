@@ -1,77 +1,75 @@
 <?php
 require_once '../lib/ALogger.php';
-require_once '../lib/LoggerFactory.php';
 require_once '../lib/Exception.php';
-require_once '../lib/adapter/File.php';
+require_once '../lib/strategy/File.php';
 
-use \wf\logger\adapter\File;
-use \wf\logger\LoggerFactory;
+use \wf\logger\strategy\File;
 
 function cfg() {
-	$cfg = [
-		'log_adapter' => 'File',
-		'log_dir'     => __DIR__.'/log',
-		'log_level'   => 7,
-	];
-	
-	if (!is_dir($cfg['log_dir'])) {
-		mkdir($cfg['log_dir'], 0755, true);
-	}
-	
-	return $cfg;
+    $cfg = [
+        'strategy' => 'File',
+        'dir'     => __DIR__.'/log',
+        'level'   => 7,
+    ];
+    
+    if (!is_dir($cfg['dir'])) {
+        mkdir($cfg['dir'], 0755, true);
+    }
+    
+    return $cfg;
 }
 
 function logging($level, $message) {
-	$logger = LoggerFactory::create(cfg());
-	return $logger->log($level, $message);
+    $logger = new \wf\logger\strategy\File(cfg('log'));
+    return $logger->log($level, $message);
 }
 
 /**
  * File test case.
  */
 class FileTest extends PHPUnit_Framework_TestCase {
-	
-	/**
-	 *
-	 * @var File
-	 */
-	private $file;
-	
-	/**
-	 * Prepares the environment before running a test.
-	 */
-	protected function setUp() {
-		parent::setUp ();
+    
+    /**
+     *
+     * @var File
+     */
+    private $file;
+    
+    /**
+     * Prepares the environment before running a test.
+     */
+    protected function setUp() {
+        parent::setUp ();
 
-		
-		$this->file = LoggerFactory::create(cfg());
-	}
-	
-	/**
-	 * Cleans up the environment after running a test.
-	 */
-	protected function tearDown() {
-		$this->file = null;
-		
-		parent::tearDown ();
-	}
-	
-	/**
-	 * Tests File->log()
-	 */
-	public function testLog() {		
-		// 测试实现类
-		$this->file->log('error', 'err message');
-		
-		// 函数保存
-		logging('debug', 'dbg message');
-		
-		// 日志组件接口
-		$logger = \wf\logger\LoggerFactory::create(cfg());
-		
-		$logger->emergency('emergency info');
-		$logger->info('info message');
-		$logger->critical('critical message');
-	}
+        
+        $this->file = new \wf\logger\strategy\File(cfg('log'));
+    }
+    
+    /**
+     * Cleans up the environment after running a test.
+     */
+    protected function tearDown() {
+        $this->file = null;
+        
+        parent::tearDown ();
+    }
+    
+    /**
+     * Tests File->log()
+     */
+    public function testLog() {        
+        // 测试实现类
+        $this->file->log('error', 'err message');
+        
+        // 函数保存
+        logging('debug', 'dbg message');
+        
+        // 日志组件接口
+        $logger = new \wf\logger\strategy\File(cfg('log'));
+        
+        $logger->emergency('emergency info');
+        $logger->info('info message');
+        $logger->critical('critical message');
+    }
 }
 
