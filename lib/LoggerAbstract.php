@@ -17,7 +17,7 @@ namespace wf\logger;
  * @link        http://docs.windwork.org/manual/wf.logger.html
  * @since       0.1.0
  */ 
-abstract class ALogger 
+abstract class LoggerAbstract 
 {
     /**
      * 日志保存目录

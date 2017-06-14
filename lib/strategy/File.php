@@ -17,7 +17,7 @@ namespace wf\logger\strategy;
  * @link        http://docs.windwork.org/manual/wf.logger.html
  * @since       0.1.0
  */
-class File extends \wf\logger\ALogger 
+class File extends \wf\logger\LoggerAbstract
 {
     /**
      * 每个日志文件的大小
@@ -28,7 +28,7 @@ class File extends \wf\logger\ALogger
     /**
      * 
      * {@inheritDoc}
-     * @see \wf\logger\ALogger::log()
+     * @see \wf\logger\LoggerAbstract::log()
      */
     public function log($level, $message, array $context = array()) 
     {

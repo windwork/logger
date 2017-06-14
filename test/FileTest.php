@@ -1,5 +1,5 @@
 <?php
-require_once '../lib/ALogger.php';
+require_once '../lib/LoggerAbstract.php';
 require_once '../lib/Exception.php';
 require_once '../lib/strategy/File.php';
 
