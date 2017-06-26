@@ -17,7 +17,7 @@ namespace wf\logger;
  * @link        http://docs.windwork.org/manual/wf.logger.html
  * @since       0.1.0
  */ 
-abstract class LoggerAbstract 
+abstract class LoggerAbstract implements LoggerInterface
 {
     /**
      * 日志保存目录
@@ -82,17 +82,6 @@ abstract class LoggerAbstract
      * @var string
      */
     protected $logLevel = 7;
-
-    /**
-     * 写入日志
-     * 
-     * @param string $level 日志级别  emergency|alert|critical|error|warning|notice|info|debug
-     * @param string $message  日志内容
-     * @param array $context
-     * @throws \wf\logger\Exception
-     * @return null
-     */
-    abstract public function log($level, $message, array $context = array());
     
     /**
      * 检查是否启用该级别日志
@@ -171,103 +160,73 @@ abstract class LoggerAbstract
     }
 
     /**
-     * 系统不可用
-     *
-     * @param string $message
-     * @param array $context
-     * @return null
+     * {@inheritDoc}
+     * @see \wf\logger\LoggerInterface::emergency()
      */
-    public function emergency($message, array $context = array())
+    public function emergency($message, array $context = [])
     {
         $this->log('emergency', $message, $context);
     }
     
     /**
-     * 功能必须马上修复
-     *
-     * @param string $message
-     * @param array $context
-     * @return null
-    */
-    public function alert($message, array $context = array())
+     * {@inheritDoc}
+     * @see \wf\logger\LoggerInterface::alert()
+     */
+    public function alert($message, array $context = [])
     {
         $this->log('alert', $message, $context);
     }
     
     /**
-     * 危险的环境.
-     *
-     * Example: 应用组件不可用, 不可预知的异常.
-     *
-     * @param string $message
-     * @param array $context
-     * @return null
-    */
-    public function critical($message, array $context = array())
+     * {@inheritDoc}
+     * @see \wf\logger\LoggerInterface::critical()
+     */
+    public function critical($message, array $context = [])
     {
         $this->log('critical', $message, $context);
     }
     
     /**
-     * 不需要立即处理的运行时错误，但通常应该被记录和监测。
-     *
-     * @param string $message
-     * @param array $context
-     * @return null
-    */
-    public function error($message, array $context = array())
+     * {@inheritDoc}
+     * @see \wf\logger\LoggerInterface::error()
+     */
+    public function error($message, array $context = [])
     {
         $this->log('error', $message, $context);
     }
     
     /**
-     * 运行时警告 (非致命错误)。仅给出提示信息，但是脚本不会终止运行。
-     *
-     * Example: 使用不赞成的接口, 不好的东西但不一定是错误
-     *
-     * @param string $message
-     * @param array $context
-     * @return null
-    */
-    public function warning($message, array $context = array())
+     * {@inheritDoc}
+     * @see \wf\logger\LoggerInterface::warning()
+     */
+    public function warning($message, array $context = [])
     {
         $this->log('warning', $message, $context);
     }
     
     /**
-     * 运行时通知。表示脚本遇到可能会表现为错误的情况，但是在可以正常运行的脚本里面也可能会有类似的通知。
-     *
-     * @param string $message
-     * @param array $context
-     * @return null
-    */
-    public function notice($message, array $context = array())
+     * {@inheritDoc}
+     * @see \wf\logger\LoggerInterface::notice()
+     */
+    public function notice($message, array $context = [])
     {
         $this->log('notice', $message, $context);
     }
     
     /**
-     * 有意义的事件
-     *
-     * Example: 用户登录，sql日志等
-     *
-     * @param string $message
-     * @param array $context
-     * @return null
-    */
-    public function info($message, array $context = array())
+     * {@inheritDoc}
+     * @see \wf\logger\LoggerInterface::info()
+     */
+    public function info($message, array $context = [])
     {
         $this->log('info', $message, $context);
     }
     
     /**
-     * 详细的调试信息
-     *
-     * @param string $message
-     * @param array $context
-     * @return null
-    */
-    public function debug($message, array $context = array())
+     * {@inheritDoc}
+     * @see \wf\logger\LoggerInterface::debug()
+     */
+    public function debug($message, array $context = [])
     {
         $this->log('debug', $message, $context);
     }

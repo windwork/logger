@@ -26,7 +26,6 @@ class File extends \wf\logger\LoggerAbstract
     const LOG_SIZE = 4096000;
 
     /**
-     * 
      * {@inheritDoc}
      * @see \wf\logger\LoggerAbstract::log()
      */
