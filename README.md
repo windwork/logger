@@ -68,4 +68,12 @@ $logging->debug('日志内容');
   6）info      重要事件，例如：用户登录和SQL记录。
   7）debug     调试信息
 ```
+
+
+<br />
+<br />
+> ### 要了解更多？
+> - [官方完整文档首页](http://docs.windwork.org/manual/)
+> - [官方源码首页](https://github.com/windwork
+
  
