@@ -17,12 +17,12 @@ composer require windwork/wf
 使用日志组件之前，需要先初始化，否则无法正常使用。
 ```
 $cfg = array(
-    'class'    => 'File',     // 日志处理（\wf\logger\strategy\中）实现的类
+    'class'    => 'File',     // 日志处理（\wf\logger\adapter\中）实现的类
     'dir'      => 'data/log', // 日志保存路径，支持wrapper，如新浪公有云可使用  saekv://data/log或saemc://data/cache
     'level'    => 7,          // 启用日志级别，可为0-7，记录小于或等于该级别的日志。日志等级：0)emergency，1)alert，2)critical，3)error，4)warning，5)notice，6)info，7)debug
 );
 
-$class = "\wf\\logger\\strategy\\{$cfg['class']}";
+$class = "\wf\\logger\\adapter\\{$cfg['class']}";
 $logging = new $class($cfg);
 
 ```

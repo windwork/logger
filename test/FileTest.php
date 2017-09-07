@@ -1,13 +1,13 @@
 <?php
 require_once '../lib/LoggerAbstract.php';
 require_once '../lib/Exception.php';
-require_once '../lib/strategy/File.php';
+require_once '../lib/adapter/File.php';
 
-use \wf\logger\strategy\File;
+use \wf\logger\adapter\File;
 
 function cfg() {
     $cfg = [
-        'strategy' => 'File',
+        'adapter' => 'File',
         'dir'     => __DIR__.'/log',
         'level'   => 7,
     ];
@@ -20,7 +20,7 @@ function cfg() {
 }
 
 function logging($level, $message) {
-    $logger = new \wf\logger\strategy\File(cfg('log'));
+    $logger = new \wf\logger\adapter\File(cfg('log'));
     return $logger->log($level, $message);
 }
 
@@ -42,7 +42,7 @@ class FileTest extends PHPUnit_Framework_TestCase {
         parent::setUp ();
 
         
-        $this->file = new \wf\logger\strategy\File(cfg('log'));
+        $this->file = new \wf\logger\adapter\File(cfg('log'));
     }
     
     /**
@@ -65,7 +65,7 @@ class FileTest extends PHPUnit_Framework_TestCase {
         logging('debug', 'dbg message');
         
         // 日志组件接口
-        $logger = new \wf\logger\strategy\File(cfg('log'));
+        $logger = new \wf\logger\adapter\File(cfg('log'));
         
         $logger->emergency('emergency info');
         $logger->info('info message');

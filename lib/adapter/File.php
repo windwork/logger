@@ -7,12 +7,12 @@
  * @copyright Copyright (c) 2008-2017 Windwork Team. (http://www.windwork.org)
  * @license   http://opensource.org/licenses/MIT
  */
-namespace wf\logger\strategy;
+namespace wf\logger\adapter;
 
 /**
  * 日志读写，使用文件存贮
  * 
- * @package     wf.logger.strategy
+ * @package     wf.logger.adapter
  * @author      cm <cmpan@qq.com>
  * @link        http://docs.windwork.org/manual/wf.logger.html
  * @since       0.1.0
